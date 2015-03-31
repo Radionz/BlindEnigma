@@ -1,0 +1,44 @@
+{
+	"song1" : {
+		"title" : "Andalouse",
+		"artist" : "Kendji Girac",
+		"path" : "Kendji Girac - Andalouse.mp3",
+		"language" : "fr"
+	},
+	"song2" : {
+		"title" : "Call Me Maybe",
+		"artist" : "Carly Rae Jepsen",
+		"path" : "Carly Rae Jepsen - Call Me Maybe.mp3",
+		"language" : "en"
+	},
+	"song3" : {
+		"title" : "A nos actes manqués",
+		"artist" : "M. Pokora",
+		"path" : "M.Pokora - A nos actes manqués.mp3",
+		"language" : "fr"
+	},
+	"song4" : {
+		"title" : "Magic in the air",
+		"artist" : "Magic System",
+		"path" : "MAGIC SYSTEM - Magic In The Air.mp3",
+		"language" : "en"
+	},
+	"song5" : {
+		"title" : "Diamonds",
+		"artist" : "Rihanna",
+		"path" : "Rihanna - Diamonds.mp3",
+		"language" : "en"
+	}
+	"song6" : {
+		"title" : "Waka Waka",
+		"artist" : "Shakira",
+		"path" : "Shakira - Waka Waka.mp3",
+		"language" : "fr"
+	}
+	"song7" : {
+		"title" : "Fresh Prince",
+		"artist" : "Soprano",
+		"path" : "Soprano - Fresh Prince.mp3",
+		"language" : "fr"
+	}
+}
