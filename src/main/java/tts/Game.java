@@ -48,7 +48,7 @@ public class Game {
 		// }
 	}
 
-	private void initGame() {*
+	private void initGame() {
 		//Si elle a déjà été crée lire l'indication de bienvuenue
 		String pathToMP3 = PATH_TO_MP3_TTS_RESOURCES + "lancement_prog.mp3";
 		File f = new File(pathToMP3);
