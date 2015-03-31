@@ -16,7 +16,7 @@ import main.java.playback.AudioPlayer;
 public class TTS {
 	private static boolean ended = true;
 
-	public static String ttsFromString(String str, String nameOutputFile,
+	public static boolean ttsFromString(String str, String nameOutputFile,
 			Language langage) {
 		ended = false;
 		try {
@@ -29,8 +29,7 @@ public class TTS {
 			urlConn.addRequestProperty("User-Agent", "Mozilla/4.76");
 			InputStream audioSrc = urlConn.getInputStream();
 			DataInputStream read = new DataInputStream(audioSrc);
-			String finalName = nameOutputFile + ".mp3";
-			OutputStream outstream = new FileOutputStream(new File(finalName));
+			OutputStream outstream = new FileOutputStream(new File(nameOutputFile));
 			byte[] buffer = new byte[1024];
 			int len;
 			while ((len = read.read(buffer)) > 0) {
@@ -38,11 +37,11 @@ public class TTS {
 			}
 			outstream.close();
 			ended = true;
-			return finalName;
+			return true;
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		return "err";
+		return false;
 	}
 
 	public enum Language {
