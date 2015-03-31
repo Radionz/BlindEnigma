@@ -6,16 +6,27 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
+
 import java.awt.FlowLayout;
+import java.util.ArrayList;
 
 public class Accueil extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel lblJoueur3;
+	private JLabel lblJoueur2;
+	private JLabel lblJoueur1;
+	private JLabel lblJoueur4;
+	private ArrayList<JLabel> lblJoueurs;
 
 	/**
 	 * Launch the application.
@@ -45,59 +56,88 @@ public class Accueil extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+		lblJoueurs = new ArrayList<JLabel>();
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		contentPane.add(panel);
-		panel.setLayout(new GridLayout(4, 1, 0, 0));
+		JPanel panelJoueurs = new JPanel();
+		panelJoueurs.setBackground(Color.BLACK);
+		contentPane.add(panelJoueurs);
+		panelJoueurs.setLayout(new GridLayout(4, 1, 0, 0));
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setForeground(Color.WHITE);
-		panel_2.setBackground(Color.BLACK);
-		panel.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		JPanel panel_j1 = new JPanel();
+		panel_j1.setForeground(Color.WHITE);
+		panel_j1.setBackground(Color.BLACK);
+		panelJoueurs.add(panel_j1);
+		panel_j1.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblJoueur = new JLabel("Joueur 1");
-		lblJoueur.setForeground(Color.WHITE);
-		lblJoueur.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJoueur.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		panel_2.add(lblJoueur);
+		lblJoueur1 = new JLabel("Ecoutez les instructions");
+		lblJoueurs.add(lblJoueur1);
+		lblJoueur1.setForeground(Color.YELLOW);
+		lblJoueur1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJoueur1.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		panel_j1.add(lblJoueur1);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setForeground(Color.WHITE);
-		panel_3.setBackground(Color.BLACK);
-		panel.add(panel_3);
-		panel_3.setLayout(new BorderLayout(0, 0));
+		JPanel panel_j2 = new JPanel();
+		panel_j2.setForeground(Color.WHITE);
+		panel_j2.setBackground(Color.BLACK);
+		panelJoueurs.add(panel_j2);
+		panel_j2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblJoueur_1 = new JLabel("Joueur 2");
-		lblJoueur_1.setForeground(Color.WHITE);
-		lblJoueur_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJoueur_1.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		panel_3.add(lblJoueur_1);
+		lblJoueur2 = new JLabel("Ecoutez les instructions");
+		lblJoueurs.add(lblJoueur2);
+		lblJoueur2.setForeground(Color.BLUE);
+		lblJoueur2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJoueur2.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		panel_j2.add(lblJoueur2);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setForeground(Color.WHITE);
-		panel_4.setBackground(Color.BLACK);
-		panel.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
+		JPanel panel_j3 = new JPanel();
+		panel_j3.setForeground(Color.WHITE);
+		panel_j3.setBackground(Color.BLACK);
+		panelJoueurs.add(panel_j3);
+		panel_j3.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblJoueur_2 = new JLabel("Joueur 3");
-		lblJoueur_2.setForeground(Color.WHITE);
-		lblJoueur_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJoueur_2.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		panel_4.add(lblJoueur_2);
+		lblJoueur3 = new JLabel("Ecoutez les instructions");
+		lblJoueurs.add(lblJoueur3);
+		lblJoueur3.setForeground(Color.RED);
+		lblJoueur3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJoueur3.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		panel_j3.add(lblJoueur3);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBackground(Color.BLACK);
-		panel.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel panel_j4 = new JPanel();
+		panel_j4.setForeground(Color.WHITE);
+		panel_j4.setBackground(Color.BLACK);
+		panelJoueurs.add(panel_j4);
+		panel_j4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblJoueur_3 = new JLabel("Joueur 4");
-		lblJoueur_3.setForeground(Color.WHITE);
-		lblJoueur_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblJoueur_3.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		panel_1.add(lblJoueur_3);
+		lblJoueur4 = new JLabel("Ecoutez les instructions");
+		lblJoueurs.add(lblJoueur4);
+		lblJoueur4.setForeground(Color.GREEN);
+		lblJoueur4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblJoueur4.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		panel_j4.add(lblJoueur4);
 	}
 
+	public JLabel getLblJoueur3() {
+		return lblJoueur3;
+	}
+	public JLabel getLblJoueur2() {
+		return lblJoueur2;
+	}
+	public JLabel getLblJoueur1() {
+		return lblJoueur1;
+	}
+	public JLabel getLblJoueur4() {
+		return lblJoueur4;
+	}
+
+	public boolean gameReady() {
+		boolean gameCanBeReady = false;
+		for (JLabel jLabel : lblJoueurs) {
+			if (jLabel.getText().startsWith("Es-tu prêt")) {
+				return false;
+			}else if (jLabel.getText().startsWith("Prêt")) {
+				gameCanBeReady = true;
+			}
+		}
+		return gameCanBeReady;
+	}
 }
