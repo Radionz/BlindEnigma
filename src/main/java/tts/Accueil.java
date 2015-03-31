@@ -54,8 +54,8 @@ public class Accueil extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setForeground(Color.WHITE);
 		panel_2.setBackground(Color.BLACK);
-		FlowLayout flowLayout = (FlowLayout) panel_2.getLayout();
 		panel.add(panel_2);
+		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblJoueur = new JLabel("Joueur 1");
 		lblJoueur.setForeground(Color.WHITE);
@@ -67,6 +67,7 @@ public class Accueil extends JFrame {
 		panel_3.setForeground(Color.WHITE);
 		panel_3.setBackground(Color.BLACK);
 		panel.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblJoueur_1 = new JLabel("Joueur 2");
 		lblJoueur_1.setForeground(Color.WHITE);
@@ -78,6 +79,7 @@ public class Accueil extends JFrame {
 		panel_4.setForeground(Color.WHITE);
 		panel_4.setBackground(Color.BLACK);
 		panel.add(panel_4);
+		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblJoueur_2 = new JLabel("Joueur 3");
 		lblJoueur_2.setForeground(Color.WHITE);
@@ -89,6 +91,7 @@ public class Accueil extends JFrame {
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.BLACK);
 		panel.add(panel_1);
+		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblJoueur_3 = new JLabel("Joueur 4");
 		lblJoueur_3.setForeground(Color.WHITE);

@@ -18,9 +18,12 @@ public class Game {
 	private HashMap<String, String> constants;
 
 	public Game() {
+		//Contiendra les chemin vers les indications auditives, en clé le nom du fichier sans extention
 		constants = new HashMap<String, String>();
+		//créer les indications auditives et lance le SplashScreen
 		initGame();
 
+		//Acceuil du jeu permettant de choisir qui joue
 		Accueil frame = new Accueil();
 		frame.setVisible(true);
 		
@@ -45,7 +48,8 @@ public class Game {
 		// }
 	}
 
-	private void initGame() {
+	private void initGame() {*
+		//Si elle a déjà été crée lire l'indication de bienvuenue
 		String pathToMP3 = PATH_TO_MP3_TTS_RESOURCES + "lancement_prog.mp3";
 		File f = new File(pathToMP3);
 		boolean alreadyPlay = false;
@@ -54,11 +58,16 @@ public class Game {
 			AudioPlayer lancement_prog = new AudioPlayer(pathToMP3);
 			lancement_prog.play(false);
 		}
+		
+		//On lance le splash screen (ecran de présentation)
 		SplashScreen sp = new SplashScreen();
 		// Création des fihcier mp3 qui contiennent les indications sonores.
 		constructSoundIndications("src/main/resources/json/french.json", sp);
 		wait(300);
+		//Quand on a terminé on cache le splash screen
 		sp.hideSplashScreen();
+		
+		//Si on l'a pas déjà lue, on lit l'indication de bienvuenue
 		if (!alreadyPlay) {
 			AudioPlayer lancement_prog = new AudioPlayer(
 					constants.get("lancement_prog"));
@@ -66,6 +75,10 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Attendre pour temporiser le jeu
+	 * @param time
+	 */
 	private void wait(int time){
 		try {
 			Thread.sleep(time);
@@ -74,6 +87,13 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Permet de créer toutes les indication sonores à partir d'un fihcier de configuration json
+	 * Gère aussi l'avancement du SplashScreen afin de faire avancer la progress bar
+	 * et aussi d'écrire ce qui est en train d'être réalisé
+	 * @param pathToJSON
+	 * @param sp
+	 */
 	private void constructSoundIndications(String pathToJSON, SplashScreen sp) {
 		// Parsing du JSON contenant les phrases d'indication
 		JSONObject french = null;
@@ -83,6 +103,7 @@ public class Game {
 			e.printStackTrace();
 		}
 
+		//Pour chaque indication sonor on va créer le fihcier mp3 correspondant
 		int i = 0;
 		for (Object obj : french.entrySet()) {
 			i++;
