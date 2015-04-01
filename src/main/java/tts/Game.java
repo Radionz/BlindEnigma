@@ -50,9 +50,9 @@ public class Game {
 			wait(1500);
 			accueil.getLblJoueur3().setText("Es-tu prêt - Joueur 2 ?");
 			wait(1500);
-			accueil.getLblJoueur1().setText("Prêt - Joueur 1 ?");
+			accueil.getLblJoueur1().setText("Prêt - Joueur 1");
 			wait(1500);
-			accueil.getLblJoueur3().setText("Prêt - Joueur 2 ?");
+			accueil.getLblJoueur3().setText("Prêt - Joueur 2");
 		}
 		
 		AudioPlayer nouvelle_partie = new AudioPlayer(

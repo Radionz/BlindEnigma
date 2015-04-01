@@ -2,7 +2,6 @@ package main.java.playback;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-
 import javazoom.jl.player.Player;
 
 public class AudioPlayer {
