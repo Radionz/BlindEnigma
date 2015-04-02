@@ -4,9 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 
+import main.java.buzzer.BuzzersController;
+import main.java.buzzer.BuzzersLoop;
 import main.java.generator.TTS;
 import main.java.generator.TTS.Language;
 import main.java.io.Parser;
@@ -14,20 +18,29 @@ import main.java.playback.AudioPlayer;
 
 import org.json.simple.JSONObject;
 
-public class Game {
+public class Game implements Observer{
 
 	private static final String PATH_TO_MP3_TTS_RESOURCES = "src/main/resources/tts/";
 	private HashMap<String, String> constants;
+	private Accueil accueil;
+	private Buzzer[] joueurs;
 
 	public Game() {
 		// Contiendra les chemin vers les indications auditives, en clé le nom
 		// du fichier sans extention
 		constants = new HashMap<String, String>();
+
+		joueurs = new Buzzer[4];
+		for(int i=0 ; i<4 ; i++)
+			joueurs[i] = new Buzzer(i);
+
+		BuzzersLoop loop = new BuzzersLoop();
+
 		// créer les indications auditives et lance le SplashScreen
 		initGame();
 
 		// Acceuil du jeu permettant de choisir qui joue
-		Accueil accueil = new Accueil();
+		accueil = new Accueil();
 		accueil.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		accueil.setVisible(true);
 
@@ -35,45 +48,20 @@ public class Game {
 				constants.get("nombre_joueur"));
 		nombre_joueur.play(true);
 		
-		accueil.getLblJoueur1().setText("Joueur 1");
-		accueil.getLblJoueur2().setText("Joueur 2");
-		accueil.getLblJoueur3().setText("Joueur 3");
-		accueil.getLblJoueur4().setText("Joueur 4");
-		
-		while(!accueil.gameReady()){
-			//Il faut savoir quand les joueur cliquent sur les buzzers
-			//buzzer 1 btn de 0 à 4, buzzer 2 btn de 5 à 9, buzzer 3 btn de 10 à 14, buzzer 4 btn de 15 à 19
-			
-			//if(le buzzer est appuyé) 		Pour tester
-			wait(1500);
-			accueil.getLblJoueur1().setText("Es-tu prêt - Joueur 1 ?");
-			wait(1500);
-			accueil.getLblJoueur3().setText("Es-tu prêt - Joueur 2 ?");
-			wait(1500);
-			accueil.getLblJoueur1().setText("Prêt - Joueur 1");
-			wait(1500);
-			accueil.getLblJoueur3().setText("Prêt - Joueur 2");
-		}
-		
-		AudioPlayer nouvelle_partie = new AudioPlayer(
-				constants.get("nouvelle_partie"));
-		nouvelle_partie.play(true);
 
+
+		loop.addObserver(this);
+		new Thread(loop).start();
+	}
+
+	private void startGame(){
+
+		AudioPlayer nouvelle_partie = new AudioPlayer(constants.get("nouvelle_partie"));
+		nouvelle_partie.play(true);
 		accueil.dispose();
-		
 		FramePlay play = new FramePlay();
-		play.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		play.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		play.setVisible(true);
-		//
-		// int i = 0;
-		// while (i <= 100) {
-		// frame.getProgressBarMusic().setValue(i++);
-		// try {
-		// Thread.sleep(100);
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// }
-		// }
 	}
 
 	private void initGame() {
@@ -159,5 +147,79 @@ public class Game {
 			constants.put(key, pathToMP3);
 		}
 		sp.notify("Indications vocales prêtes.", french.size(), i);
+	}
+
+	public boolean allPlayerReady(){
+		for(Buzzer joueur : joueurs)
+			if(joueur.isSelected() && !joueur.isReady())
+				return false;
+		return true;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		int num = (Integer) arg;
+		switch (num){
+			case 0: joueurs[0].redButtonStart();
+
+				break;
+
+			// Tests
+			case 1: joueurs[0].redButtonStart();
+				if(joueurs[0].isReady()){
+					(new AudioPlayer(constants.get("joueur_1_pret"))).play(false);
+					accueil.getLblJoueur1().setText("Joueur 1 - Prêt");
+				}
+				else{
+					(new AudioPlayer(constants.get("joueur_1"))).play(false);
+					accueil.getLblJoueur1().setText("Joueur 1");
+				}
+				break;
+			case 2: joueurs[1].redButtonStart();
+				if(joueurs[1].isReady()){
+					(new AudioPlayer(constants.get("joueur_2_pret"))).play(false);
+					accueil.getLblJoueur2().setText("Joueur 2 - Prêt");
+				}
+				else{
+					(new AudioPlayer(constants.get("joueur_2"))).play(false);
+					accueil.getLblJoueur2().setText("Joueur 2");
+				}
+				break;
+			case 3: joueurs[2].redButtonStart();
+				if(joueurs[2].isReady()){
+					(new AudioPlayer(constants.get("joueur_3_pret"))).play(false);
+					accueil.getLblJoueur3().setText("Joueur 3 - Prêt");
+				}
+				else{
+					(new AudioPlayer(constants.get("joueur_3"))).play(false);
+					accueil.getLblJoueur3().setText("Joueur 3");
+				}
+				break;
+			case 4: joueurs[3].redButtonStart();
+				if(joueurs[3].isReady()){
+					(new AudioPlayer(constants.get("joueur_4_pret"))).play(false);
+					accueil.getLblJoueur4().setText("Joueur 4 - Prêt");
+				}
+				else{
+					(new AudioPlayer(constants.get("joueur_4"))).play(false);
+					accueil.getLblJoueur4().setText("Joueur 4");
+				}
+				break;
+			// fin tests
+
+
+			case 5: joueurs[1].redButtonStart();
+				break;
+			case 10: joueurs[2].redButtonStart();
+				break;
+			case 15: joueurs[3].redButtonStart();
+				break;
+			default:
+		}
+
+		if(allPlayerReady()){
+			wait(2000);
+			startGame();
+		}
 	}
 }
