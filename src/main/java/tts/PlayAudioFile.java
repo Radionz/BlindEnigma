@@ -11,10 +11,10 @@ public class PlayAudioFile {
 
 	public static void main(String[] args) {
 		PlayAudioFile apt = new PlayAudioFile();
-		apt.Play("src/main/resources/tts/lancement_prog.mp3");
+		apt.play("src/main/resources/tts/lancement_prog.mp3");
 	}
 
-	public void Play(String filename) {
+	public void play(String filename) {
 		try {
 			File file = new File(filename);
 			AudioInputStream in = AudioSystem.getAudioInputStream(file);
@@ -22,7 +22,7 @@ public class PlayAudioFile {
 			AudioFormat baseFormat = in.getFormat();
 			AudioFormat decodedFormat = new AudioFormat(
 					AudioFormat.Encoding.PCM_SIGNED,
-					baseFormat.getSampleRate() * 1.5F, 16,
+					baseFormat.getSampleRate() * 1.45F, 16,
 					baseFormat.getChannels(), baseFormat.getChannels() * 2,
 					baseFormat.getSampleRate(), false);
 			din = AudioSystem.getAudioInputStream(decodedFormat, in);
