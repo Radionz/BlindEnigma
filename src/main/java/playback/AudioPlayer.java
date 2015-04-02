@@ -26,14 +26,6 @@ public class AudioPlayer {
 			player.close();
 	}
 
-	private void waitFor1S() {
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
 	// play the MP3 file to the sound card
 	public void play(boolean untilTheEnd) {
 		try {
