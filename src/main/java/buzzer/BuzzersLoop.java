@@ -26,7 +26,7 @@ public class BuzzersLoop extends Observable implements Runnable {
 
 		firstBuzz = null;
 		for (int i = 0; i < controllers.length && firstBuzz == null; i++) {
-			if (controllers[i].getType() == Controller.Type.KEYBOARD) {
+			if (controllers[i].getType() == Controller.Type.STICK) {
 				// Found a buzz
 				firstBuzz = controllers[i];
 			}

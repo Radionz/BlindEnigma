@@ -44,8 +44,7 @@ public class Game implements Observer{
 		accueil.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		accueil.setVisible(true);
 
-		AudioPlayer nombre_joueur = new AudioPlayer(
-				constants.get("nombre_joueur"));
+		AudioPlayer nombre_joueur = new AudioPlayer(constants.get("nombre_joueur"));
 		nombre_joueur.play(true);
 		
 
@@ -71,8 +70,8 @@ public class Game implements Observer{
 		boolean alreadyPlay = false;
 		if (f.exists()) {
 			alreadyPlay = true;
-			AudioPlayer lancement_prog = new AudioPlayer(pathToMP3);
-			lancement_prog.play(false);
+			PlayAudioFile lancement_prog = new PlayAudioFile();
+			lancement_prog.play(pathToMP3);
 		}
 
 		// On lance le splash screen (ecran de présentation)
@@ -160,12 +159,9 @@ public class Game implements Observer{
 	public void update(Observable o, Object arg) {
 		int num = (Integer) arg;
 		switch (num){
-			case 0: joueurs[0].redButtonStart();
-
-				break;
 
 			// Tests
-			case 1: joueurs[0].redButtonStart();
+			case 0: joueurs[0].redButtonStart();
 				if(joueurs[0].isReady()){
 					(new AudioPlayer(constants.get("joueur_1_pret"))).play(false);
 					accueil.getLblJoueur1().setText("Joueur 1 - Prêt");
@@ -175,7 +171,7 @@ public class Game implements Observer{
 					accueil.getLblJoueur1().setText("Joueur 1");
 				}
 				break;
-			case 2: joueurs[1].redButtonStart();
+			case 5: joueurs[1].redButtonStart();
 				if(joueurs[1].isReady()){
 					(new AudioPlayer(constants.get("joueur_2_pret"))).play(false);
 					accueil.getLblJoueur2().setText("Joueur 2 - Prêt");
@@ -185,7 +181,7 @@ public class Game implements Observer{
 					accueil.getLblJoueur2().setText("Joueur 2");
 				}
 				break;
-			case 3: joueurs[2].redButtonStart();
+			case 10: joueurs[2].redButtonStart();
 				if(joueurs[2].isReady()){
 					(new AudioPlayer(constants.get("joueur_3_pret"))).play(false);
 					accueil.getLblJoueur3().setText("Joueur 3 - Prêt");
@@ -195,7 +191,7 @@ public class Game implements Observer{
 					accueil.getLblJoueur3().setText("Joueur 3");
 				}
 				break;
-			case 4: joueurs[3].redButtonStart();
+			case 15: joueurs[3].redButtonStart();
 				if(joueurs[3].isReady()){
 					(new AudioPlayer(constants.get("joueur_4_pret"))).play(false);
 					accueil.getLblJoueur4().setText("Joueur 4 - Prêt");
@@ -205,16 +201,6 @@ public class Game implements Observer{
 					accueil.getLblJoueur4().setText("Joueur 4");
 				}
 				break;
-			// fin tests
-
-
-			case 5: joueurs[1].redButtonStart();
-				break;
-			case 10: joueurs[2].redButtonStart();
-				break;
-			case 15: joueurs[3].redButtonStart();
-				break;
-			default:
 		}
 
 		if(allPlayerReady()){
