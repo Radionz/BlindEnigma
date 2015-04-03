@@ -263,6 +263,16 @@ public class Game implements Observer {
 		return true;
 	}
 
+	public ArrayList<Buzzer> getGagnants(){
+		int numQuestionCorrecte = questions[0].getBonneReponse();
+		ArrayList<Buzzer> winners = new ArrayList<Buzzer>();
+		for(Buzzer joueur : joueurs)
+			if(joueur.getNumReponse() == numQuestionCorrecte)
+				winners.add(joueur);
+		System.out.println("Num question " + numQuestionCorrecte);
+		return winners;
+	}
+
 	private void repondreQuestion(int joueur, int reponse) {
 		System.out.println("joueur " + joueur + " reponse " + reponse);
 		if (!joueurs[joueur].haveAswered() && joueurs[joueur].isPlaying()) {

@@ -48,5 +48,10 @@ public class Question {
 		return answers;
 	}
 	
-	
+	public int getBonneReponse(){
+		for(int i=0; i<answers.size() ; i++)
+			if(answers.get(i).equals(goodAns))
+				return i;
+		return 0;
+	}
 }
