@@ -19,5 +19,6 @@
 	"attention_temps":"Attention il ne vous reste que quelques secondes pour repondre",
 	"buzzer_non-detecte":"Attention les buzzers le sont pas branchés correctement",
 	"nombre_joueur":"Veuillez prendre vos buzer maintenant, et appuyer une première fois dessus !",
-	"indication_jeu":"Quand tous les joueurs sont prets appuyez une seconde fois sur les buzzers"
+	"indication_jeu":"Quand tous les joueurs sont prets appuyez une seconde fois sur les buzzers",
+	"reponse_juste":"ont donné une réponse juste."
 }

@@ -2,6 +2,7 @@ package main.java.tts;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Observable;
@@ -19,7 +20,7 @@ import main.java.playback.AudioPlayer;
 
 import org.json.simple.JSONObject;
 
-public class Game implements Observer{
+public class Game implements Observer {
 
 	private static final String PATH_TO_MP3_TTS_RESOURCES = "src/main/resources/tts/";
 	private static final String PATH_TO_MP3_MUSIC_RESOURCES = "src/main/resources/music/";
@@ -36,7 +37,7 @@ public class Game implements Observer{
 		constants = new HashMap<String, String>();
 
 		joueurs = new Buzzer[4];
-		for(int i=0 ; i<4 ; i++)
+		for (int i = 0; i < 4; i++)
 			joueurs[i] = new Buzzer(i);
 
 		BuzzersLoop loop = new BuzzersLoop();
@@ -48,27 +49,38 @@ public class Game implements Observer{
 
 		// Acceuil du jeu permettant de choisir qui joue
 		accueil = new Accueil();
-		accueil.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		accueil.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		accueil.setVisible(true);
 
-		AudioPlayer nombre_joueur = new AudioPlayer(constants.get("nombre_joueur"));
+		AudioPlayer nombre_joueur = new AudioPlayer(
+				constants.get("nombre_joueur"));
 		nombre_joueur.play(true);
-		
-
 
 		loop.addObserver(this);
 		new Thread(loop).start();
 	}
 
-	private void startGame(){
+	private void startGame() {
 
 		gameStarted = true;
-		questions[0] = new Question("Somebody That I Used to Know","L'Auvergnat","Les lacs du Conemara","Andalouse","Kendji Girac - Andalouse.mp3");
-		questions[1] = new Question("Wu Tang Clan - Protect Ya Neck","Nirvana - Smells Like Teen Spirit","Eminem - Lose Yourself","Carly Rae Jepsen - Call Me Maybe","Carly Rae Jepsen - Call Me Maybe.mp3");
-		questions[2] = new Question("Les Enfoirés - Toute la vie","Simon and Garfunkel - The Sound of Silence","Led Zeppelin - Stairway To Heaven","Rihanna - Diamonds","Rihanna - Diamonds.mp3");
-		questions[3] = new Question("Snoop Dogg - What's My Name","Francis Cabrel - Sarbacane","Johnny Hallyday - Allumez le Feu","Soprano - Fresh Prince","Soprano - Fresh Prince.mp3");
+		questions[0] = new Question("Somebody That I Used to Know",
+				"L'Auvergnat", "Les lacs du Conemara", "Andalouse",
+				"Kendji Girac - Andalouse.mp3");
+		questions[1] = new Question("Wu Tang Clan - Protect Ya Neck",
+				"Nirvana - Smells Like Teen Spirit", "Eminem - Lose Yourself",
+				"Carly Rae Jepsen - Call Me Maybe",
+				"Carly Rae Jepsen - Call Me Maybe.mp3");
+		questions[2] = new Question("Les Enfoirés - Toute la vie",
+				"Simon and Garfunkel - The Sound of Silence",
+				"Led Zeppelin - Stairway To Heaven", "Rihanna - Diamonds",
+				"Rihanna - Diamonds.mp3");
+		questions[3] = new Question("Snoop Dogg - What's My Name",
+				"Francis Cabrel - Sarbacane",
+				"Johnny Hallyday - Allumez le Feu", "Soprano - Fresh Prince",
+				"Soprano - Fresh Prince.mp3");
 
-		AudioPlayer nouvelle_partie = new AudioPlayer(constants.get("nouvelle_partie"));
+		AudioPlayer nouvelle_partie = new AudioPlayer(
+				constants.get("nouvelle_partie"));
 		nouvelle_partie.play(true);
 		accueil.dispose();
 		play = new FramePlay();
@@ -76,17 +88,20 @@ public class Game implements Observer{
 		play.getProgressBarMusic().setValue(0);
 		play.setVisible(true);
 		play.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		AudioPlayer premiereQuestion = new AudioPlayer(constants.get("question_generale"));
+		AudioPlayer premiereQuestion = new AudioPlayer(
+				constants.get("question_generale"));
 		premiereQuestion.play(true);
-		AudioPlayer premiereChanson = new AudioPlayer(PATH_TO_MP3_MUSIC_RESOURCES + questions[0].getUrlMusic());
+		AudioPlayer premiereChanson = new AudioPlayer(
+				PATH_TO_MP3_MUSIC_RESOURCES + questions[0].getUrlMusic());
 		premiereChanson.play(false);
 
-		for(int i=0; i<=2000; i++) {
+		for (int i = 0; i <= 2000; i++) {
 			wait(10);
 			play.getProgressBarMusic().setValue(i);
 		}
-		for(int i=0; i<4; i++){
-			AudioPlayer proposition = new AudioPlayer(constants.get("proposition"+(i+1)));
+		for (int i = 0; i < 4; i++) {
+			AudioPlayer proposition = new AudioPlayer(
+					constants.get("proposition" + (i + 1)));
 			proposition.play(true);
 			play.getReponses()[i].setText(questions[0].getAnswers().get(i));
 		}
@@ -177,9 +192,9 @@ public class Game implements Observer{
 		sp.notify("Indications vocales prêtes.", french.size(), i);
 	}
 
-	public boolean allPlayerReady(){
-		for(Buzzer joueur : joueurs)
-			if(joueur.isSelected() && !joueur.isReady())
+	public boolean allPlayerReady() {
+		for (Buzzer joueur : joueurs)
+			if (joueur.isSelected() && !joueur.isReady())
 				return false;
 		return true;
 	}
@@ -187,60 +202,61 @@ public class Game implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		int num = (Integer) arg;
-		switch (num){
+		switch (num) {
 
-			// Tests
-			case 0: joueurs[0].redButtonStart();
-				if(joueurs[0].isReady() && !gameStarted){
-					(new AudioPlayer(constants.get("joueur_1_pret"))).play(false);
-					accueil.getLblJoueur1().setText("Joueur 1 - Prêt");
-				}
-				else if(!gameStarted) {
-					(new AudioPlayer(constants.get("joueur_1"))).play(false);
-					accueil.getLblJoueur1().setText("Joueur 1");
-				}
-				break;
-			case 5: joueurs[1].redButtonStart();
-				if(joueurs[1].isReady() && !gameStarted ){
-					(new AudioPlayer(constants.get("joueur_2_pret"))).play(false);
-					accueil.getLblJoueur2().setText("Joueur 2 - Prêt");
-				}
-				else if(!gameStarted){
-					(new AudioPlayer(constants.get("joueur_2"))).play(false);
-					accueil.getLblJoueur2().setText("Joueur 2");
-				}
-				break;
-			case 10: joueurs[2].redButtonStart();
-				if(joueurs[2].isReady() && !gameStarted ){
-					(new AudioPlayer(constants.get("joueur_3_pret"))).play(false);
-					accueil.getLblJoueur3().setText("Joueur 3 - Prêt");
-				}
-				else if(!gameStarted){
-					(new AudioPlayer(constants.get("joueur_3"))).play(false);
-					accueil.getLblJoueur3().setText("Joueur 3");
-				}
-				break;
-			case 15: joueurs[3].redButtonStart();
-				if(joueurs[3].isReady() && !gameStarted ){
-					(new AudioPlayer(constants.get("joueur_4_pret"))).play(false);
-					accueil.getLblJoueur4().setText("Joueur 4 - Prêt");
-				}
-				else if(!gameStarted){
-					(new AudioPlayer(constants.get("joueur_4"))).play(false);
-					accueil.getLblJoueur4().setText("Joueur 4");
-				}
-				break;
-			default: repondreQuestion(num/5, 4-(num%5));
+		// Tests
+		case 0:
+			joueurs[0].redButtonStart();
+			if (joueurs[0].isReady() && !gameStarted) {
+				(new AudioPlayer(constants.get("joueur_1_pret"))).play(false);
+				accueil.getLblJoueur1().setText("Joueur 1 - Prêt");
+			} else if (!gameStarted) {
+				(new AudioPlayer(constants.get("joueur_1"))).play(false);
+				accueil.getLblJoueur1().setText("Joueur 1");
+			}
+			break;
+		case 5:
+			joueurs[1].redButtonStart();
+			if (joueurs[1].isReady() && !gameStarted) {
+				(new AudioPlayer(constants.get("joueur_2_pret"))).play(false);
+				accueil.getLblJoueur2().setText("Joueur 2 - Prêt");
+			} else if (!gameStarted) {
+				(new AudioPlayer(constants.get("joueur_2"))).play(false);
+				accueil.getLblJoueur2().setText("Joueur 2");
+			}
+			break;
+		case 10:
+			joueurs[2].redButtonStart();
+			if (joueurs[2].isReady() && !gameStarted) {
+				(new AudioPlayer(constants.get("joueur_3_pret"))).play(false);
+				accueil.getLblJoueur3().setText("Joueur 3 - Prêt");
+			} else if (!gameStarted) {
+				(new AudioPlayer(constants.get("joueur_3"))).play(false);
+				accueil.getLblJoueur3().setText("Joueur 3");
+			}
+			break;
+		case 15:
+			joueurs[3].redButtonStart();
+			if (joueurs[3].isReady() && !gameStarted) {
+				(new AudioPlayer(constants.get("joueur_4_pret"))).play(false);
+				accueil.getLblJoueur4().setText("Joueur 4 - Prêt");
+			} else if (!gameStarted) {
+				(new AudioPlayer(constants.get("joueur_4"))).play(false);
+				accueil.getLblJoueur4().setText("Joueur 4");
+			}
+			break;
+		default:
+			repondreQuestion(num / 5, 4 - (num % 5));
 		}
 
-		if(allPlayerReady() && !gameStarted){
+		if (allPlayerReady() && !gameStarted) {
 			wait(2000);
 			startGame();
 		}
 	}
 
-	public boolean allPlayerAnswered(){
-		for(Buzzer joueur : joueurs) {
+	public boolean allPlayerAnswered() {
+		for (Buzzer joueur : joueurs) {
 			if (!joueur.haveAswered() && joueur.isPlaying())
 				return false;
 		}
@@ -248,15 +264,45 @@ public class Game implements Observer{
 	}
 
 	private void repondreQuestion(int joueur, int reponse) {
-		System.out.println("joueur "+joueur + " reponse "+ reponse);
-		if(!joueurs[joueur].haveAswered() && joueurs[joueur].isPlaying()) {
+		System.out.println("joueur " + joueur + " reponse " + reponse);
+		if (!joueurs[joueur].haveAswered() && joueurs[joueur].isPlaying()) {
 			play.getJoueurParRep()[reponse][joueur].setVisible(true);
 			joueurs[joueur].setNumReponse(reponse);
 		}
-		if(allPlayerAnswered()) System.out.println("FINI");
+		if (allPlayerAnswered()) {
+			for (Buzzer b : getGagnants()) {
+				switch (b.getPlayer()) {
+				case 1:
+					AudioPlayer joueur_1 = new AudioPlayer(
+							constants.get("joueur_1"));
+					joueur_1.play(true);
+					break;
+				case 2:
+					AudioPlayer joueur_2 = new AudioPlayer(
+							constants.get("joueur_2"));
+					joueur_2.play(true);
+					break;
+				case 3:
+					AudioPlayer joueur_3 = new AudioPlayer(
+							constants.get("joueur_3"));
+					joueur_3.play(true);
+					break;
+				case 4:
+					AudioPlayer joueur_4 = new AudioPlayer(
+							constants.get("joueur_4"));
+					joueur_4.play(true);
+					break;
+				default:
+					break;
+				}
+			}
+			AudioPlayer reponse_juste = new AudioPlayer(
+					constants.get("reponse_juste"));
+			reponse_juste.play(true);
+		}
 	}
 
-	private void donnerReponse(){
+	private void donnerReponse() {
 
 	}
 }
