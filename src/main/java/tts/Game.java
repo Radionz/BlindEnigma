@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import main.java.buzzer.BuzzersController;
 import main.java.buzzer.BuzzersLoop;
@@ -30,6 +30,7 @@ public class Game implements Observer {
 	private boolean gameStarted;
 	private Question[] questions;
 	private FramePlay play;
+	private int numQuestion;
 
 	public Game() {
 		// Contiendra les chemin vers les indications auditives, en clé le nom
@@ -43,7 +44,7 @@ public class Game implements Observer {
 		BuzzersLoop loop = new BuzzersLoop();
 		questions = new Question[4];
 		gameStarted = false;
-
+		numQuestion = 0;
 		// créer les indications auditives et lance le SplashScreen
 		initGame();
 
@@ -55,11 +56,6 @@ public class Game implements Observer {
 		AudioPlayer nombre_joueur = new AudioPlayer(
 				constants.get("nombre_joueur"));
 		nombre_joueur.play(true);
-		
-		accueil.getLblJoueur1().setText("");
-		accueil.getLblJoueur2().setText("");
-		accueil.getLblJoueur3().setText("");
-		accueil.getLblJoueur4().setText("");
 
 		loop.addObserver(this);
 		new Thread(loop).start();
@@ -93,11 +89,17 @@ public class Game implements Observer {
 		play.getProgressBarMusic().setValue(0);
 		play.setVisible(true);
 		play.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		AudioPlayer premiereQuestion = new AudioPlayer(
+
+		nextQuestion();
+	}
+
+	private void nextQuestion(){
+		play.getProgressBarMusic().setValue(0);
+		AudioPlayer question = new AudioPlayer(
 				constants.get("question_generale"));
-		premiereQuestion.play(true);
+		question.play(true);
 		AudioPlayer premiereChanson = new AudioPlayer(
-				PATH_TO_MP3_MUSIC_RESOURCES + questions[0].getUrlMusic());
+				PATH_TO_MP3_MUSIC_RESOURCES + questions[numQuestion].getUrlMusic());
 		premiereChanson.play(false);
 
 		for (int i = 0; i <= 2000; i++) {
@@ -108,7 +110,7 @@ public class Game implements Observer {
 			AudioPlayer proposition = new AudioPlayer(
 					constants.get("proposition" + (i + 1)));
 			proposition.play(true);
-			play.getReponses()[i].setText(questions[0].getAnswers().get(i));
+			play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
 		}
 	}
 
@@ -119,8 +121,8 @@ public class Game implements Observer {
 		boolean alreadyPlay = false;
 		if (f.exists()) {
 			alreadyPlay = true;
-			PlayAudioFile lancement_prog = new PlayAudioFile();
-			lancement_prog.play(pathToMP3);
+			AudioPlayer lancement_prog = new AudioPlayer(pathToMP3);
+			lancement_prog.play(false);
 		}
 
 		// On lance le splash screen (ecran de présentation)
@@ -141,7 +143,7 @@ public class Game implements Observer {
 
 	/**
 	 * Attendre pour temporiser le jeu
-	 * 
+	 *
 	 * @param time
 	 */
 	private void wait(int time) {
@@ -157,7 +159,7 @@ public class Game implements Observer {
 	 * configuration json Gère aussi l'avancement du SplashScreen afin de faire
 	 * avancer la progress bar et aussi d'écrire ce qui est en train d'être
 	 * réalisé
-	 * 
+	 *
 	 * @param pathToJSON
 	 * @param sp
 	 */
@@ -251,7 +253,7 @@ public class Game implements Observer {
 			}
 			break;
 		default:
-			repondreQuestion(num / 5, 4 - (num % 5));
+			if(gameStarted) repondreQuestion(num / 5, 4 - (num % 5));
 		}
 
 		if (allPlayerReady() && !gameStarted) {
@@ -269,13 +271,27 @@ public class Game implements Observer {
 	}
 
 	public ArrayList<Buzzer> getGagnants(){
-		int numQuestionCorrecte = questions[0].getBonneReponse();
+		int numQuestionCorrecte = questions[numQuestion].getBonneReponse();
 		ArrayList<Buzzer> winners = new ArrayList<Buzzer>();
 		for(Buzzer joueur : joueurs)
 			if(joueur.getNumReponse() == numQuestionCorrecte)
 				winners.add(joueur);
 		System.out.println("Num question " + numQuestionCorrecte);
+		System.out.println("Joueur gagnant " + winners);
 		return winners;
+	}
+
+	private void resetAnswers(){
+		for(Buzzer joueur : joueurs)
+			joueur.clearReponse();
+	}
+
+	private void resetGUI(){
+		for(JLabel label : play.getReponses())
+			label.setText("");
+		for(JLabel[] labelTab : play.getJoueurParRep())
+			for(JLabel label : labelTab)
+				label.setVisible(false);
 	}
 
 	private void repondreQuestion(int joueur, int reponse) {
@@ -287,22 +303,22 @@ public class Game implements Observer {
 		if (allPlayerAnswered()) {
 			for (Buzzer b : getGagnants()) {
 				switch (b.getPlayer()) {
-				case 1:
+				case 0:
 					AudioPlayer joueur_1 = new AudioPlayer(
 							constants.get("joueur_1"));
 					joueur_1.play(true);
 					break;
-				case 2:
+				case 1:
 					AudioPlayer joueur_2 = new AudioPlayer(
 							constants.get("joueur_2"));
 					joueur_2.play(true);
 					break;
-				case 3:
+				case 2:
 					AudioPlayer joueur_3 = new AudioPlayer(
 							constants.get("joueur_3"));
 					joueur_3.play(true);
 					break;
-				case 4:
+				case 3:
 					AudioPlayer joueur_4 = new AudioPlayer(
 							constants.get("joueur_4"));
 					joueur_4.play(true);
@@ -314,10 +330,14 @@ public class Game implements Observer {
 			AudioPlayer reponse_juste = new AudioPlayer(
 					constants.get("reponse_juste"));
 			reponse_juste.play(true);
+
+			// passage à la prochaine question
+			numQuestion++;
+			resetAnswers();
+			resetGUI();
+			nextQuestion();
 		}
 	}
 
-	private void donnerReponse() {
 
-	}
 }

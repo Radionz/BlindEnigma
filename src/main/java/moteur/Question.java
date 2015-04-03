@@ -49,6 +49,7 @@ public class Question {
 	}
 	
 	public int getBonneReponse(){
+		System.out.println(answers);
 		for(int i=0; i<answers.size() ; i++)
 			if(answers.get(i).equals(goodAns))
 				return i;
