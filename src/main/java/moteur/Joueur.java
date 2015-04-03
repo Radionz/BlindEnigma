@@ -1,4 +1,4 @@
-package moteur;
+package main.java.moteur;
 
 public class Joueur {
 	String name;

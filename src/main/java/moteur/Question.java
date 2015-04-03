@@ -1,4 +1,4 @@
-package moteur;
+package main.java.moteur;
 
 import java.util.ArrayList;
 import java.util.Collections;

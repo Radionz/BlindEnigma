@@ -8,11 +8,15 @@ public class Buzzer {
     public int player;
     public boolean selected;
     public boolean ready;
+    public int numReponse;
+    private boolean isPlaying;
 
     public Buzzer(int player) {
         this.player = player;
         this.selected = false;
         this.ready = false;
+        this.isPlaying = false;
+        this.numReponse = -1;
     }
 
     public int getPlayer() {
@@ -40,7 +44,28 @@ public class Buzzer {
     }
 
     public void redButtonStart(){
-        ready = selected;
-        selected = (!selected);
+        isPlaying = ready = selected;
+        selected = !selected;
+    }
+
+    public int getNumReponse() {
+        return numReponse;
+    }
+
+    public void setNumReponse(int numReponse) {
+        this.numReponse = numReponse;
+    }
+
+    public void clearReponse(){
+        this.numReponse=-1;
+    }
+
+    public boolean haveAswered(){
+        System.out.println("BLA: " + player + (this.numReponse != -1) + " " + isPlaying);
+        return this.numReponse != -1;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
     }
 }
