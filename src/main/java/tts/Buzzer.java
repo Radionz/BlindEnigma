@@ -61,7 +61,6 @@ public class Buzzer {
     }
 
     public boolean haveAswered(){
-        System.out.println("BLA: " + player + (this.numReponse != -1) + " " + isPlaying);
         return this.numReponse != -1;
     }
 
