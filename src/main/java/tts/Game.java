@@ -55,6 +55,11 @@ public class Game implements Observer {
 		AudioPlayer nombre_joueur = new AudioPlayer(
 				constants.get("nombre_joueur"));
 		nombre_joueur.play(true);
+		
+		accueil.getLblJoueur1().setText("");
+		accueil.getLblJoueur2().setText("");
+		accueil.getLblJoueur3().setText("");
+		accueil.getLblJoueur4().setText("");
 
 		loop.addObserver(this);
 		new Thread(loop).start();
@@ -310,6 +315,11 @@ public class Game implements Observer {
 					constants.get("reponse_juste"));
 			reponse_juste.play(true);
 		}
+	}
+
+	private ArrayList<Buzzer> getGagnants() {
+		// TODO Auto-generated method stub
+		return new ArrayList<Buzzer>();
 	}
 
 	private void donnerReponse() {
