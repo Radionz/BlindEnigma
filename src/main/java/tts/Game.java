@@ -317,11 +317,6 @@ public class Game implements Observer {
 		}
 	}
 
-	private ArrayList<Buzzer> getGagnants() {
-		// TODO Auto-generated method stub
-		return new ArrayList<Buzzer>();
-	}
-
 	private void donnerReponse() {
 
 	}
