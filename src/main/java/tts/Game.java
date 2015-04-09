@@ -311,7 +311,13 @@ public class Game implements Observer {
 		if (allPlayerAnswered()) {
 			for (Buzzer b : getGagnants()) {
 				if (getGagnants().size() > 1) {
-					
+					AudioPlayer joueur_1 = new AudioPlayer(
+							constants.get("les_joueurs"));
+					joueur_1.play(true);
+				}else{
+					AudioPlayer joueur_1 = new AudioPlayer(
+							constants.get("le_joueur"));
+					joueur_1.play(true);
 				}
 				switch (b.getPlayer()) {
 				case 0:
