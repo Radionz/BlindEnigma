@@ -67,17 +67,17 @@ public class Game implements Observer {
 		questions[0] = new Question("Somebody That I Used to Know",
 				"L'Auvergnat", "Les lacs du Conemara", "Andalouse",
 				"Kendji Girac - Andalouse.mp3");
-		questions[1] = new Question("Wu Tang Clan - Protect Ya Neck",
-				"Nirvana - Smells Like Teen Spirit", "Eminem - Lose Yourself",
-				"Carly Rae Jepsen - Call Me Maybe",
+		questions[1] = new Question("Protect Ya Neck",
+				"Smells Like Teen Spirit", "Lose Yourself",
+				"Call Me Maybe",
 				"Carly Rae Jepsen - Call Me Maybe.mp3");
-		questions[2] = new Question("Les Enfoirés - Toute la vie",
-				"Simon and Garfunkel - The Sound of Silence",
-				"Led Zeppelin - Stairway To Heaven", "Rihanna - Diamonds",
+		questions[2] = new Question("Toute la vie",
+				"The Sound of Silence",
+				"Stairway To Heaven", "Diamonds",
 				"Rihanna - Diamonds.mp3");
-		questions[3] = new Question("Snoop Dogg - What's My Name",
-				"Francis Cabrel - Sarbacane",
-				"Johnny Hallyday - Allumez le Feu", "Soprano - Fresh Prince",
+		questions[3] = new Question("What's My Name",
+				"Sarbacane",
+				"Allumez le Feu", "Fresh Prince",
 				"Soprano - Fresh Prince.mp3");
 
 		AudioPlayer nouvelle_partie = new AudioPlayer(
@@ -107,10 +107,18 @@ public class Game implements Observer {
 			play.getProgressBarMusic().setValue(i);
 		}
 		for (int i = 0; i < 4; i++) {
+			TTS.ttsFromString(questions[numQuestion].getAnswers().get(i), PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "")+".mp3", Language.FRENCH);
+			System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "")+".mp3");
+			wait(500);
+			AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "")+".mp3");
+			proposition.play(true);
+			play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
+			/*
 			AudioPlayer proposition = new AudioPlayer(
 					constants.get("proposition" + (i + 1)));
 			proposition.play(true);
 			play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
+			 */
 		}
 	}
 
@@ -176,7 +184,7 @@ public class Game implements Observer {
 		int i = 0;
 		for (Object obj : french.entrySet()) {
 			i++;
-			wait(400);
+			wait(100);
 			Entry<String, String> entry = (Entry<String, String>) obj;
 			String key = (String) entry.getKey(); // Nom de la phrase/fichier
 			String value = entry.getValue(); // Phrase de description
