@@ -43,7 +43,7 @@ public class Buzzer {
         this.ready = ready;
     }
 
-    public void redButtonStart(){
+    public void redButtonStart() {
         isPlaying = ready = selected;
         selected = !selected;
     }
@@ -56,11 +56,11 @@ public class Buzzer {
         this.numReponse = numReponse;
     }
 
-    public void clearReponse(){
-        this.numReponse=-1;
+    public void clearReponse() {
+        this.numReponse = -1;
     }
 
-    public boolean haveAswered(){
+    public boolean haveAswered() {
         return this.numReponse != -1;
     }
 
