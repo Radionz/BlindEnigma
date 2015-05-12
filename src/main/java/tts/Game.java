@@ -34,6 +34,9 @@ public class Game implements Observer {
         // du fichier sans extention
         constants = new HashMap<String, String>();
 
+        // créer les indications auditives et lance le SplashScreen
+        initGame();
+
         joueurs = new Buzzer[4];
         for (int i = 0; i < 4; i++)
             joueurs[i] = new Buzzer(i);
@@ -42,8 +45,6 @@ public class Game implements Observer {
         questions = new Question[4];
         gameStarted = false;
         numQuestion = 0;
-        // créer les indications auditives et lance le SplashScreen
-        initGame();
 
         // Acceuil du jeu permettant de choisir qui joue
         accueil = new Accueil();

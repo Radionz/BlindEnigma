@@ -3,8 +3,13 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/jinput/jinput-test.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jinput/jinput.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/jinput" />
     </CLASSES>
     <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/lib/jinput" />
+    </NATIVE>
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jinput" recursive="false" />
   </library>
 </component>
