@@ -336,6 +336,7 @@ public class Game implements Observer {
     }
 
     private void repondreQuestion(int joueur, int reponse) {
+        if(joueur != 0 && joueur != 1 && joueur != 2 && joueur != 3 || reponse != 0 && reponse != 1 && reponse != 2 && reponse != 3) return;
         System.out.println("joueur " + joueur + " reponse " + reponse);
         if (!joueurs[joueur].haveAswered() && joueurs[joueur].isPlaying()) {
             play.getJoueurParRep()[reponse][joueur].setVisible(true);
