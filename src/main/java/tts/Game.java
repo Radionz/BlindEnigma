@@ -8,7 +8,6 @@ import main.java.moteur.Question;
 import main.java.playback.AudioPlayer;
 import org.json.simple.JSONObject;
 import net.java.games.input.Controller.Type;
-
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -62,50 +61,50 @@ public class Game implements Observer {
 
     private void startGame() {
         gameStarted = true;
-        questions[0] = new Question(["Somebody That I Used to Know","en"],
-                ["L'Auvergnat","fr"], 
-                ["Les lacs du Conemara","fr"], 
-                ["Andalouse","fr"],
+        questions[0] = new Question(new String[]{"Somebody That I Used to Know","en"},
+                new String[]{"L'Auvergnat","fr"},
+                new String[]{"Les lacs du Conemara","fr"},
+                new String[]{"Andalouse","fr"},
                 "Kendji Girac - Andalouse.mp3");
-        questions[1] = new Question(["Protect Ya Neck","en"],
-                ["Smells Like Teen Spirit","en"],
-                ["Lose Yourself","en"],
-                ["Call Me Maybe","en"],
+        questions[1] = new Question(new String[]{"Protect Ya Neck","en"},
+                new String[]{"Smells Like Teen Spirit","en"},
+                new String[]{"Lose Yourself","en"},
+                new String[]{"Call Me Maybe","en"},
                 "Carly Rae Jepsen - Call Me Maybe.mp3");
-        questions[2] = new Question(["Toute la vie","fr"],
-                ["The Sound of Silence","en"],
-                ["Stairway To Heaven","en"], 
-                ["Diamonds","en"],
+        questions[2] = new Question(new String[]{"Toute la vie","fr"},
+                new String[]{"The Sound of Silence","en"},
+                new String[]{"Stairway To Heaven","en"},
+                new String[]{"Diamonds","en"},
                 "Rihanna - Diamonds.mp3");
-        questions[3] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Fresh Prince","fr"],
+        questions[3] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Fresh Prince","fr"},
                 "Soprano - Fresh Prince.mp3");
-        questions[4] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Désolé","fr"],
+        questions[4] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Désolé","fr"},
                 "Sexion D'Assaut - Désolé.mp3");
-        questions[5] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Cheerleader","en"],
+        questions[5] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Cheerleader","en"},
                 "OMI - Cheerleader.mp3");
-        questions[6] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Sur Ma Route","fr"],
+        questions[6] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Sur Ma Route","fr"},
                 "Black M - Sur Ma Route.mp3");
-        questions[7] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Dans Ma Paranoia","fr"],
+        questions[7] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Dans Ma Paranoia","fr"},
                 "JUL - Dans Ma Paranoia.mp3");
-        questions[8] = new Question(["What's My Name","en"],
-                ["Sarbacane","fr"],
-                ["Allumez le Feu","fr"], 
-                ["Lean On","en"],
+        questions[8] = new Question(new String[]{"What's My Name","en"},
+                new String[]{"Sarbacane","fr"},
+                new String[]{"Allumez le Feu","fr"},
+                new String[]{"Lean On","en"},
                 "Major Lazer - Lean On.mp3");
         
         
@@ -147,42 +146,26 @@ public class Game implements Observer {
             play.getProgressBarMusic().setValue(i);
         }
         for (int i = 0; i < 4; i++) {
-            TTS.ttsFromString(questions[numQuestion].getAnswers().get(i), PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3", Language.FRENCH);
-            System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
+            if(questions[numQuestion].getAnswers().get(i)[1] == "fr"){
+                TTS.ttsFromString(questions[numQuestion].getAnswers().get(i)[0], PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3", Language.FRENCH);
+            }
+            else{
+                TTS.ttsFromString(questions[numQuestion].getAnswers().get(i)[0], PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3", Language.ENGLISH);
+            }
+            System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3");
             wait(300);
-            AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
+            AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3");
             proposition.play(true);
-            play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
+            play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i)[0]);
         }
     }
 
     private void initGame() {
-        // Si elle a déjà été crée lire l'indication de bienvuenue
-        String pathToMP3 = PATH_TO_MP3_TTS_RESOURCES + "lancement_prog.mp3";
-        File f = new File(pathToMP3);
-        boolean alreadyPlay = false;
-        if (f.exists()) {
-            alreadyPlay = true;
-            AudioPlayer lancement_prog = new AudioPlayer(pathToMP3);
-            lancement_prog.play(false);
-        }
-
         // On lance le splash screen (ecran de présentation)
         SplashScreen sp = new SplashScreen();
-        // Création des fihcier mp3 qui contiennent les indications sonores.
-        for(String s : new File("..").list())
-            System.out.println(s);
         constructSoundIndications("../ressources/json/french.json", sp);
-        wait(300);
         // Quand on a terminé on cache le splash screen
         sp.hideSplashScreen();
-
-        // Si on l'a pas déjà lue, on lit l'indication de bienvuenue
-        if (!alreadyPlay) {
-            AudioPlayer lancement_prog = new AudioPlayer(
-                    constants.get("lancement_prog"));
-            lancement_prog.play(true);
-        }
     }
 
     /**
@@ -220,7 +203,7 @@ public class Game implements Observer {
         int i = 0;
         for (Object obj : french.entrySet()) {
             i++;
-            wait(100);
+            //wait(100);
             Entry<String, String> entry = (Entry<String, String>) obj;
             String key = entry.getKey(); // Phrase de description
             String value = entry.getValue(); // Phrase de description
