@@ -49,9 +49,14 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/jinput/jinput.jar!/" />
+          <root url="file://$MODULE_DIR$/lib/jinput" />
         </CLASSES>
         <JAVADOC />
+        <NATIVE>
+          <root url="file://$MODULE_DIR$/lib/jinput" />
+        </NATIVE>
         <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib/jinput" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library">

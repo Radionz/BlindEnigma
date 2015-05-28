@@ -60,7 +60,6 @@ public class Game implements Observer {
     }
 
     private void startGame() {
-
         gameStarted = true;
         questions[0] = new Question("Somebody That I Used to Know",
                 "L'Auvergnat", "Les lacs du Conemara", "Andalouse",
@@ -92,6 +91,16 @@ public class Game implements Observer {
     }
 
     private void nextQuestion() {
+        if (numQuestion >= questions.length) {
+            int meilleurJoueur = 0;
+            for (int i = 0; i < 4; i++) {
+                System.out.println(i + " --> " + joueurs[i].getScore());
+                if (meilleurJoueur < joueurs[i].getScore()) {
+                    meilleurJoueur = i;
+                }
+            }
+            System.out.println("Le gagnant est: " + meilleurJoueur + " avec " + joueurs[meilleurJoueur].getScore() + " points");
+        }
         play.getProgressBarMusic().setValue(0);
         AudioPlayer question = new AudioPlayer(
                 constants.get("question_generale"));
@@ -107,16 +116,10 @@ public class Game implements Observer {
         for (int i = 0; i < 4; i++) {
             TTS.ttsFromString(questions[numQuestion].getAnswers().get(i), PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3", Language.FRENCH);
             System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
-            wait(500);
+            wait(300);
             AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
             proposition.play(true);
             play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
-            /*
-			AudioPlayer proposition = new AudioPlayer(
-					constants.get("proposition" + (i + 1)));
-			proposition.play(true);
-			play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
-			 */
         }
     }
 
@@ -184,7 +187,7 @@ public class Game implements Observer {
             i++;
             wait(100);
             Entry<String, String> entry = (Entry<String, String>) obj;
-            String key = (String) entry.getKey(); // Nom de la phrase/fichier
+            String key = entry.getKey(); // Phrase de description
             String value = entry.getValue(); // Phrase de description
 
             String pathToMP3 = PATH_TO_MP3_TTS_RESOURCES + key + ".mp3";
@@ -322,21 +325,25 @@ public class Game implements Observer {
                         AudioPlayer joueur_1 = new AudioPlayer(
                                 constants.get("joueur_1"));
                         joueur_1.play(true);
+                        joueurs[0].winAPoint();
                         break;
                     case 1:
                         AudioPlayer joueur_2 = new AudioPlayer(
                                 constants.get("joueur_2"));
                         joueur_2.play(true);
+                        joueurs[1].winAPoint();
                         break;
                     case 2:
                         AudioPlayer joueur_3 = new AudioPlayer(
                                 constants.get("joueur_3"));
                         joueur_3.play(true);
+                        joueurs[2].winAPoint();
                         break;
                     case 3:
                         AudioPlayer joueur_4 = new AudioPlayer(
                                 constants.get("joueur_4"));
                         joueur_4.play(true);
+                        joueurs[3].winAPoint();
                         break;
                     default:
                         break;

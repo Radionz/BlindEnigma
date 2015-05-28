@@ -10,6 +10,7 @@ public class Buzzer {
     public boolean ready;
     public int numReponse;
     private boolean isPlaying;
+    private int score;
 
     public Buzzer(int player) {
         this.player = player;
@@ -17,6 +18,7 @@ public class Buzzer {
         this.ready = false;
         this.isPlaying = false;
         this.numReponse = -1;
+        score = 0;
     }
 
     public int getPlayer() {
@@ -66,5 +68,13 @@ public class Buzzer {
 
     public boolean isPlaying() {
         return isPlaying;
+    }
+
+    public void winAPoint() {
+        score++;
+    }
+
+    public int getScore(){
+        return score;
     }
 }
