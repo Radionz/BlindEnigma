@@ -11,11 +11,8 @@ import net.java.games.input.Controller.Type;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Observable;
-import java.util.Observer;
 
 public class Game implements Observer {
 
@@ -106,8 +103,8 @@ public class Game implements Observer {
                 new String[]{"Fade Out Lines","en"},
                 new String[]{"Lean On","en"},
                 "Major Lazer - Lean On.mp3");
-        
-        
+
+        shuffleArray(questions);
         
         AudioPlayer nouvelle_partie = new AudioPlayer(
                 constants.get("nouvelle_partie"));
@@ -125,7 +122,7 @@ public class Game implements Observer {
     private void nextQuestion() {
         if (numQuestion >= questions.length) {
             int meilleurJoueur = 0;
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 9; i++) {
                 System.out.println(i + " --> " + joueurs[i].getScore());
                 if (meilleurJoueur < joueurs[i].getScore()) {
                     meilleurJoueur = i;
@@ -168,6 +165,8 @@ public class Game implements Observer {
         sp.hideSplashScreen();
     }
 
+
+
     /**
      * Attendre pour temporiser le jeu
      *
@@ -178,6 +177,20 @@ public class Game implements Observer {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Implementing Fisher–Yates shuffle
+    static void shuffleArray(Question[] ar)
+    {
+        Random rnd = new Random();
+        for (int i = ar.length - 1; i > 0; i--)
+        {
+            int index = rnd.nextInt(i + 1);
+            // Simple swap
+            Question a = ar[index];
+            ar[index] = ar[i];
+            ar[i] = a;
         }
     }
 
@@ -330,6 +343,7 @@ public class Game implements Observer {
         }
         if (allPlayerAnswered()) {
             for (Buzzer b : getGagnants()) {
+                System.out.println("PLAYER: b.getPlayer() "+b.getPlayer());
                 if (getGagnants().size() > 1) {
                     AudioPlayer joueur_1 = new AudioPlayer(
                             constants.get("les_joueurs"));
