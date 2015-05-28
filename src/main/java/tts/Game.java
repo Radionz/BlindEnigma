@@ -7,7 +7,7 @@ import main.java.io.Parser;
 import main.java.moteur.Question;
 import main.java.playback.AudioPlayer;
 import org.json.simple.JSONObject;
-
+import net.java.games.input.Controller.Type;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -161,32 +161,11 @@ public class Game implements Observer {
     }
 
     private void initGame() {
-        // Si elle a déjà été crée lire l'indication de bienvuenue
-        String pathToMP3 = PATH_TO_MP3_TTS_RESOURCES + "lancement_prog.mp3";
-        File f = new File(pathToMP3);
-        boolean alreadyPlay = false;
-        if (f.exists()) {
-            alreadyPlay = true;
-            AudioPlayer lancement_prog = new AudioPlayer(pathToMP3);
-            lancement_prog.play(false);
-        }
-
         // On lance le splash screen (ecran de présentation)
         SplashScreen sp = new SplashScreen();
-        // Création des fihcier mp3 qui contiennent les indications sonores.
-        for(String s : new File("..").list())
-            System.out.println(s);
         constructSoundIndications("../ressources/json/french.json", sp);
-        wait(300);
         // Quand on a terminé on cache le splash screen
         sp.hideSplashScreen();
-
-        // Si on l'a pas déjà lue, on lit l'indication de bienvuenue
-        if (!alreadyPlay) {
-            AudioPlayer lancement_prog = new AudioPlayer(
-                    constants.get("lancement_prog"));
-            lancement_prog.play(true);
-        }
     }
 
     /**
@@ -224,7 +203,7 @@ public class Game implements Observer {
         int i = 0;
         for (Object obj : french.entrySet()) {
             i++;
-            wait(100);
+            //wait(100);
             Entry<String, String> entry = (Entry<String, String>) obj;
             String key = entry.getKey(); // Phrase de description
             String value = entry.getValue(); // Phrase de description
