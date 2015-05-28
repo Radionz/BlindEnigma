@@ -24,7 +24,7 @@ public class MenuJeu extends MenuAbstrait {
      * vous pouvez définir autant d'options que vous voulez
      **/
 	protected String[] nomOptions() {
-		String[] noms = {"Jouer","Règles","A propos","Quitter"};
+		String[] noms = {"Jouer","Règles","Quitter"};
 		return noms;
 	}
 
@@ -34,38 +34,21 @@ public class MenuJeu extends MenuAbstrait {
 	protected void lancerOption(int i) {
 		switch (i){  
 		case 0 : new Game();break;
-		case 1 : System.err.println("action non définie");
-		case 2 : System.err.println("action non définie");
-		case 3 : System.exit(0);
+		case 1 : new Regles("Règles");break;
+		case 2 : System.exit(0);
 		default: System.err.println("action non définie");
 		}
 	}
-
-	/*
-		protected void lancerOption(int i) {
-		switch (i){
-		case 0 : new Game();break;
-		case 1 : new Jeu(nomJeu);break;
-		case 2 : new GestionSon("Gestion du son");break;
-		case 3 : new FichierScore("Ecriture dans un fichier");break;
-		case 4 : new GestionImage("Exemple d'image");break;
-		case 5 : new DropImage("Drop image");break;
-		case 6 : System.exit(0);
-		default: System.err.println("action non définie");
-		}
-	}
-
-	 */
 
 	// renvoie le fichier wave contenant le message d'accueil
 	// ces fichiers doivent être placés dans ressources/sons/
 	protected  String wavAccueil() {
-		return "../ressources/sons/accueil.wav";
+		return "../ressources/tts/lancement_prog.mp3";
 	}
 
 	// renvoie le fichier wave contenant la règle du jeu
 	protected  String wavRegleJeu() {
-		return "../ressources/sons/accueil.wav";
+		return "../ressources/tts/lancement_prog.mp3";
 	}
 	
 }
