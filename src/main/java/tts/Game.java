@@ -11,8 +11,11 @@ import net.java.games.input.Controller.Type;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Observable;
+import java.util.Observer;
 
 public class Game implements Observer {
 
@@ -92,7 +95,7 @@ public class Game implements Observer {
                 new String[]{"Sarbacane","fr"},
                 new String[]{"Allumez le Feu","fr"},
                 new String[]{"Sur Ma Route","fr"},
-                "Black M - Sur ma route.mp3");
+                "Black M - Sur Ma Route.mp3");
         questions[7] = new Question(new String[]{"What's My Name","en"},
                 new String[]{"Sarbacane","fr"},
                 new String[]{"Allumez le Feu","fr"},
@@ -103,8 +106,8 @@ public class Game implements Observer {
                 new String[]{"Allumez le Feu","fr"},
                 new String[]{"Lean On","en"},
                 "Major Lazer - Lean On.mp3");
-
-        shuffleArray(questions);
+        
+        
         
         AudioPlayer nouvelle_partie = new AudioPlayer(
                 constants.get("nouvelle_partie"));
@@ -122,7 +125,7 @@ public class Game implements Observer {
     private void nextQuestion() {
         if (numQuestion >= questions.length) {
             int meilleurJoueur = 0;
-            for (int i = 0; i < 9; i++) {
+            for (int i = 0; i < 4; i++) {
                 System.out.println(i + " --> " + joueurs[i].getScore());
                 if (meilleurJoueur < joueurs[i].getScore()) {
                     meilleurJoueur = i;
@@ -163,20 +166,6 @@ public class Game implements Observer {
         constructSoundIndications("../ressources/json/french.json", sp);
         // Quand on a terminé on cache le splash screen
         sp.hideSplashScreen();
-    }
-
-    // Implementing Fisher–Yates shuffle
-    static void shuffleArray(Question[] ar)
-    {
-        Random rnd = new Random();
-        for (int i = ar.length - 1; i > 0; i--)
-        {
-            int index = rnd.nextInt(i + 1);
-            // Simple swap
-            Question a = ar[index];
-            ar[index] = ar[i];
-            ar[i] = a;
-        }
     }
 
     /**
