@@ -42,7 +42,7 @@ public class Game implements Observer {
             joueurs[i] = new Buzzer(i);
 
         BuzzersLoop loop = new BuzzersLoop();
-        questions = new Question[4];
+        questions = new Question[9];
         gameStarted = false;
         numQuestion = 0;
 
@@ -61,22 +61,54 @@ public class Game implements Observer {
 
     private void startGame() {
         gameStarted = true;
-        questions[0] = new Question("Somebody That I Used to Know",
-                "L'Auvergnat", "Les lacs du Conemara", "Andalouse",
+        questions[0] = new Question(["Somebody That I Used to Know","en"],
+                ["L'Auvergnat","fr"], 
+                ["Les lacs du Conemara","fr"], 
+                ["Andalouse","fr"],
                 "Kendji Girac - Andalouse.mp3");
-        questions[1] = new Question("Protect Ya Neck",
-                "Smells Like Teen Spirit", "Lose Yourself",
-                "Call Me Maybe",
+        questions[1] = new Question(["Protect Ya Neck","en"],
+                ["Smells Like Teen Spirit","en"],
+                ["Lose Yourself","en"],
+                ["Call Me Maybe","en"],
                 "Carly Rae Jepsen - Call Me Maybe.mp3");
-        questions[2] = new Question("Toute la vie",
-                "The Sound of Silence",
-                "Stairway To Heaven", "Diamonds",
+        questions[2] = new Question(["Toute la vie","fr"],
+                ["The Sound of Silence","en"],
+                ["Stairway To Heaven","en"], 
+                ["Diamonds","en"],
                 "Rihanna - Diamonds.mp3");
-        questions[3] = new Question("What's My Name",
-                "Sarbacane",
-                "Allumez le Feu", "Fresh Prince",
+        questions[3] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Fresh Prince","fr"],
                 "Soprano - Fresh Prince.mp3");
-
+        questions[4] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Désolé","fr"],
+                "Sexion D'Assaut - Désolé.mp3");
+        questions[5] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Cheerleader","en"],
+                "OMI - Cheerleader.mp3");
+        questions[6] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Sur Ma Route","fr"],
+                "Black M - Sur Ma Route.mp3");
+        questions[7] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Dans Ma Paranoia","fr"],
+                "JUL - Dans Ma Paranoia.mp3");
+        questions[8] = new Question(["What's My Name","en"],
+                ["Sarbacane","fr"],
+                ["Allumez le Feu","fr"], 
+                ["Lean On","en"],
+                "Major Lazer - Lean On.mp3");
+        
+        
+        
         AudioPlayer nouvelle_partie = new AudioPlayer(
                 constants.get("nouvelle_partie"));
         nouvelle_partie.play(true);
