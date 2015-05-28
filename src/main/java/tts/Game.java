@@ -81,29 +81,29 @@ public class Game implements Observer {
                 new String[]{"Allumez le Feu","fr"},
                 new String[]{"Fresh Prince","fr"},
                 "Soprano - Fresh Prince.mp3");
-        questions[4] = new Question(new String[]{"What's My Name","en"},
-                new String[]{"Sarbacane","fr"},
-                new String[]{"Allumez le Feu","fr"},
+        questions[4] = new Question(new String[]{"Homeless","en"},
+                new String[]{"Want to want me","en"},
+                new String[]{"Conmigo","fr"},
                 new String[]{"Désolé","fr"},
                 "Sexion D'Assaut - Désolé.mp3");
-        questions[5] = new Question(new String[]{"What's My Name","en"},
+        questions[5] = new Question(new String[]{"Shake it off","en"},
                 new String[]{"Sarbacane","fr"},
                 new String[]{"Allumez le Feu","fr"},
                 new String[]{"Cheerleader","en"},
                 "OMI - Cheerleader.mp3");
-        questions[6] = new Question(new String[]{"What's My Name","en"},
-                new String[]{"Sarbacane","fr"},
-                new String[]{"Allumez le Feu","fr"},
+        questions[6] = new Question(new String[]{"Titanium","en"},
+                new String[]{"Uptown Funk","en"},
+                new String[]{"Doucement","fr"},
                 new String[]{"Sur Ma Route","fr"},
                 "Black M - Sur Ma Route.mp3");
-        questions[7] = new Question(new String[]{"What's My Name","en"},
-                new String[]{"Sarbacane","fr"},
-                new String[]{"Allumez le Feu","fr"},
+        questions[7] = new Question(new String[]{"Christine","fr"},
+                new String[]{"Take me to church","en"},
+                new String[]{"Thinking Out Loud","en"},
                 new String[]{"Dans Ma Paranoia","fr"},
                 "JUL - Dans Ma Paranoia.mp3");
-        questions[8] = new Question(new String[]{"What's My Name","en"},
-                new String[]{"Sarbacane","fr"},
-                new String[]{"Allumez le Feu","fr"},
+        questions[8] = new Question(new String[]{"Chandelier","en"},
+                new String[]{"Pas là","fr"},
+                new String[]{"Fade Out Lines","en"},
                 new String[]{"Lean On","en"},
                 "Major Lazer - Lean On.mp3");
         
