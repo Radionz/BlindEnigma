@@ -27,7 +27,7 @@ public class Accueil extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout(0, 0));
         lblJoueurs = new ArrayList<JLabel>();
-
+        setAlwaysOnTop(true);
         JPanel panelJoueurs = new JPanel();
         panelJoueurs.setBackground(Color.BLACK);
         contentPane.add(panelJoueurs);

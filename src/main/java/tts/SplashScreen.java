@@ -23,7 +23,7 @@ public class SplashScreen {
         dialog.setModal(false);
         dialog.setUndecorated(true);
         JLabel background = new JLabel(new ImageIcon(
-                "src/main/resources/images/Splash_Screen.jpg"));
+                "../ressources/images/Splash_Screen.jpg"));
         background.setLayout(new BorderLayout());
         dialog.add(background);
         text = new JLabel("Chargement...");
@@ -39,6 +39,7 @@ public class SplashScreen {
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
+        dialog.setAlwaysOnTop(true);
     }
 
     public void notify(String string, int total, int actual) {

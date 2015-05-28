@@ -12,7 +12,7 @@ public class PlayAudioFile {
 
     public static void main(String[] args) {
         PlayAudioFile apt = new PlayAudioFile();
-        apt.play("src/main/resources/tts/lancement_prog.mp3");
+        apt.play("../ressources/tts/lancement_prog.mp3");
     }
 
     public void play(String filename) {

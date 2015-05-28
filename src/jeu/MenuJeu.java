@@ -36,7 +36,7 @@ public class MenuJeu extends MenuAbstrait {
 		case 0 : new Game();break;
 		case 1 : System.err.println("action non définie");
 		case 2 : System.err.println("action non définie");
-		case 6 : System.exit(0);
+		case 3 : System.exit(0);
 		default: System.err.println("action non définie");
 		}
 	}

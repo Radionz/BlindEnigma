@@ -7,6 +7,7 @@ import main.java.io.Parser;
 import main.java.moteur.Question;
 import main.java.playback.AudioPlayer;
 import org.json.simple.JSONObject;
+import net.java.games.input.Controller.Type;
 
 import javax.swing.*;
 import java.io.File;
@@ -19,8 +20,8 @@ import java.util.Observer;
 
 public class Game implements Observer {
 
-    private static final String PATH_TO_MP3_TTS_RESOURCES = "src/main/resources/tts/";
-    private static final String PATH_TO_MP3_MUSIC_RESOURCES = "src/main/resources/music/";
+    private static final String PATH_TO_MP3_TTS_RESOURCES = "../ressources/tts/";
+    private static final String PATH_TO_MP3_MUSIC_RESOURCES = "../ressources/music/";
     private HashMap<String, String> constants;
     private Accueil accueil;
     private Buzzer[] joueurs;
@@ -137,7 +138,9 @@ public class Game implements Observer {
         // On lance le splash screen (ecran de présentation)
         SplashScreen sp = new SplashScreen();
         // Création des fihcier mp3 qui contiennent les indications sonores.
-        constructSoundIndications("src/main/resources/json/french.json", sp);
+        for(String s : new File("..").list())
+            System.out.println(s);
+        constructSoundIndications("../ressources/json/french.json", sp);
         wait(300);
         // Quand on a terminé on cache le splash screen
         sp.hideSplashScreen();
@@ -218,6 +221,7 @@ public class Game implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         int num = (Integer) arg;
+        System.out.println(num);
         switch (num) {
 
             // Tests
