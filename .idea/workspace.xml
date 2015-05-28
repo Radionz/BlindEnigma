@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da17335-28af-460f-ab8a-7d1469061894" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Accueil.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Accueil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/buzzer/BuzzersLoop.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/buzzer/BuzzersLoop.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Game.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Game.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/jeu/MenuJeu.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/jeu/MenuJeu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/PlayAudioFile.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/PlayAudioFile.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/SplashScreen.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/SplashScreen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tts/Game.java" afterPath="$PROJECT_DIR$/src/main/java/tts/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/moteur/Question.java" afterPath="$PROJECT_DIR$/src/main/java/moteur/Question.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="2fd8b364-54b3-4ce9-8744-fb83afa5ad68" name="exclude" comment="exclude" />
@@ -94,10 +87,11 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tts/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334">
-              <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.62689394">
+              <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#13000#13008#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -400,21 +394,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/encodings.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/BlindEnigma.iml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/jeu/MenuJeu.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/main/java/buzzer/BuzzersLoop.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Accueil.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Game.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/PlayAudioFile.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/SplashScreen.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/jeu/MenuJeu.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/buzzer/BuzzersLoop.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/tts/Accueil.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/tts/Game.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/tts/PlayAudioFile.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/tts/SplashScreen.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -422,6 +402,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/music/Black M - Sur ma route.mp3</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/music/Major Lazer - Lean On.mp3</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/music/OMI - Cheerleader.mp3</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/resources/music/Sexion D'Assaut - Désolé.mp3</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -898,7 +882,7 @@
       <workItem from="1432113659511" duration="699000" />
       <workItem from="1432122042885" duration="886000" />
       <workItem from="1432127253533" duration="115000" />
-      <workItem from="1432793267657" duration="3644000" />
+      <workItem from="1432793267657" duration="4376000" />
     </task>
     <task id="LOCAL-00001" summary="Prise en compte des buzzers - Selection des joueurs">
       <created>1427961286408</created>
@@ -948,11 +932,17 @@
       <option name="project" value="LOCAL" />
       <updated>1432793864997</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="modifs 3">
+      <created>1432802444670</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1432802444670</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64270000" />
+    <option name="totallyTimeSpent" value="65002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -965,7 +955,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13931888" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13931888" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31888545" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1009,7 +999,8 @@
     <MESSAGE value="dernier commit avant de commencer le cours de POO" />
     <MESSAGE value="modifs" />
     <MESSAGE value="modifs 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifs 2" />
+    <MESSAGE value="modifs 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifs 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1037,6 +1028,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#13000#13008#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1413,10 +1405,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tts/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="74" column="36" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.62689394">
+          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#13000#13008#0" expanded="true" />
           </folding>
         </state>
       </provider>
