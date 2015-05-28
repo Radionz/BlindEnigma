@@ -95,7 +95,7 @@ public class Game implements Observer {
                 new String[]{"Uptown Funk","en"},
                 new String[]{"Doucement","fr"},
                 new String[]{"Sur Ma Route","fr"},
-                "Black M - Sur Ma Route.mp3");
+                "Black M - Sur ma route.mp3");
         questions[7] = new Question(new String[]{"Christine","fr"},
                 new String[]{"Take me to church","en"},
                 new String[]{"Thinking Out Loud","en"},
