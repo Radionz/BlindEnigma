@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Question {
-    ArrayList<String> answers = new ArrayList<String>();
-    private String ans0, ans1, ans2, goodAns, urlMusic;
+    ArrayList<String[]> answers = new ArrayList<String[]>();
+    private String ans0, lang0, ans1, lang1, ans2, lang2, goodAns, langGoodAns, urlMusic;
 
-    public Question(String ans0, String ans1, String ans2, String goodAns,
+    public Question(String[] ans0, String[] ans1, String[] ans2, String[] goodAns,
                     String urlMusic) {
         super();
-        this.ans0 = ans0;
-        this.ans1 = ans1;
-        this.ans2 = ans2;
-        this.goodAns = goodAns;
+        this.ans0 = ans0[0];
+        this.ans1 = ans1[0];
+        this.ans2 = ans2[0];
+        this.goodAns = goodAns[0];
         this.urlMusic = urlMusic;
         answers.add(ans0);
         answers.add(ans1);
@@ -21,18 +21,6 @@ public class Question {
         answers.add(goodAns);
         Collections.shuffle(answers);
 
-    }
-
-    public String getAns0() {
-        return ans0;
-    }
-
-    public String getAns1() {
-        return ans1;
-    }
-
-    public String getAns2() {
-        return ans2;
     }
 
     public String getGoodAns() {
@@ -47,7 +35,7 @@ public class Question {
         this.urlMusic = urlMusic;
     }
 
-    public ArrayList<String> getAnswers() {
+    public ArrayList<String[]> getAnswers() {
         return answers;
     }
 

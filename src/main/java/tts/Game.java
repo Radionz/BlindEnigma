@@ -7,7 +7,6 @@ import main.java.io.Parser;
 import main.java.moteur.Question;
 import main.java.playback.AudioPlayer;
 import org.json.simple.JSONObject;
-import net.java.games.input.Controller.Type;
 
 import javax.swing.*;
 import java.io.File;
@@ -115,12 +114,17 @@ public class Game implements Observer {
             play.getProgressBarMusic().setValue(i);
         }
         for (int i = 0; i < 4; i++) {
-            TTS.ttsFromString(questions[numQuestion].getAnswers().get(i), PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3", Language.FRENCH);
-            System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
+            if(questions[numQuestion].getAnswers().get(i)[1] == "fr"){
+                TTS.ttsFromString(questions[numQuestion].getAnswers().get(i)[0], PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3", Language.FRENCH);
+            }
+            else{
+                TTS.ttsFromString(questions[numQuestion].getAnswers().get(i)[0], PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3", Language.ENGLISH);
+            }
+            System.out.println(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3");
             wait(300);
-            AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i).replace(" ", "") + ".mp3");
+            AudioPlayer proposition = new AudioPlayer(PATH_TO_MP3_TTS_RESOURCES + questions[numQuestion].getAnswers().get(i)[0].replace(" ", "") + ".mp3");
             proposition.play(true);
-            play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i));
+            play.getReponses()[i].setText(questions[numQuestion].getAnswers().get(i)[0]);
         }
     }
 
