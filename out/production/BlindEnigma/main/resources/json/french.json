@@ -3,6 +3,10 @@
   "nouvelle_partie": "Une nouvelle partie va commencer, Préparez vous.",
   "question_generale": "Quel est le titre de cette chanson ?",
   "extrait_jouer": "Attention, l'extrait va débuter.",
+  "regles":"Voici les règles",
+  "regle": "Pour jouer, branchez les manettes à votre ordinateur. Quand l'ordinateur les aura reconues appuyez sur le bouton jouer du menu principal.
+  Vous pouvez jouer jusqu'à quatre joueurs, chaque joueur devra appuyer UNE fois sur le bouton rouge pour dire qu'il participe, puis encore une fois pour lancer la partie.
+  Pour répondre aux questions utiliser 4 petits boutons",
   "les_joueurs": "Les joueurs",
   "le": "le",
   "et": "et",
