@@ -4,7 +4,6 @@
     <list default="true" id="3da17335-28af-460f-ab8a-7d1469061894" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Game.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/main/java/tts/Game.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/BlindEnigma/jeu/MenuJeu.class" afterPath="$PROJECT_DIR$/out/production/BlindEnigma/jeu/MenuJeu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tts/Game.java" afterPath="$PROJECT_DIR$/src/main/java/tts/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="2fd8b364-54b3-4ce9-8744-fb83afa5ad68" name="exclude" comment="exclude" />
@@ -955,7 +954,7 @@
       <workItem from="1432113659511" duration="699000" />
       <workItem from="1432122042885" duration="886000" />
       <workItem from="1432127253533" duration="115000" />
-      <workItem from="1432793267657" duration="7137000" />
+      <workItem from="1432793267657" duration="7147000" />
     </task>
     <task id="LOCAL-00001" summary="Prise en compte des buzzers - Selection des joueurs">
       <created>1427961286408</created>
@@ -1023,11 +1022,17 @@
       <option name="project" value="LOCAL" />
       <updated>1432804257135</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="modifs 6">
+      <created>1432806066937</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1432806066937</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67763000" />
+    <option name="totallyTimeSpent" value="67773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1087,7 +1092,8 @@
     <MESSAGE value="modifs 3" />
     <MESSAGE value="modifs 4" />
     <MESSAGE value="modifs 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifs 5" />
+    <MESSAGE value="modifs 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifs 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
